@@ -63,7 +63,7 @@ public class Day3 {
                 //current line L & R
                 if(gearMatcher.start() !=0 && sideOfCharHasAdjacentSymbol(line, gearMatcher, digitRegex, Side.LEFT)) {
                     partsFound++;
-                    while(!numMatcher.find()) {
+                    while(numMatcher.find()) {
                         if(numMatcher.end() == gearMatcher.start()) {
                             multiple = setMultiple(Integer.parseInt(numMatcher.group()), multiple);
                             break;
@@ -72,7 +72,7 @@ public class Day3 {
                 }
                 if(gearMatcher.end() < line.length() && sideOfCharHasAdjacentSymbol(line, gearMatcher, digitRegex, Side.RIGHT)) {
                     partsFound++;
-                    while(!numMatcher.find()) {
+                    while(numMatcher.find()) {
                         if(gearMatcher.end() == numMatcher.start()) {
                             multiple = setMultiple(Integer.parseInt(numMatcher.group()), multiple);
                             break;
@@ -86,9 +86,10 @@ public class Day3 {
                                 (numMatcherPrev.start() <= gearMatcher.start() && numMatcherPrev.end() >= gearMatcher.end())) {
                             partsFound++;
                             multiple = setMultiple(Integer.parseInt(numMatcherPrev.group()), multiple);
-                            break;
+                            //no break, possible to match a 1.1 in which you'll need to run the numMatcherPrev.find() again to get the second num instead of quitting on first match
                         }
                     }
+                    numMatcherPrev.reset();
                 }
                 if(!nextLine.isEmpty()) {
                     while(numMatcherNext.find()) {
@@ -96,9 +97,10 @@ public class Day3 {
                                 (numMatcherNext.start() <= gearMatcher.start() && numMatcherNext.end() >= gearMatcher.end())) {
                             partsFound++;
                             multiple = setMultiple(Integer.parseInt(numMatcherNext.group()), multiple);
-                            break;
+                            //no break, possible to match a 1.1 in which you'll need to run the numMatcherNext.find() again to get the second num instead of quitting on first match
                         }
                     }
+                    numMatcherNext.reset();
                 }
                 doneWithSymbolSearch = true;
             }
