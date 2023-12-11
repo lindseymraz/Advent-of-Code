@@ -5,119 +5,120 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Day3 {
-        static boolean firstTime = true;
-        static String prevLine = "";
-        static String line = "";
-        static String nextLine = "";
-        static final String symbolRegex = "[@#$%&\\*\\-\\+=\\/]+";
-        static final String digitRegex = "\\d+";
+    static String prevLine = "";
+    static String line = "";
+    static String nextLine = "";
+    static final String symbolRegex = "[@#$%&\\*\\-\\+=\\/]+";
+    static final String digitRegex = "\\d+";
 
-        static final String gearRegex = "\\*";
+    static final String gearRegex = "\\*";
 
-        enum Side {
-            LEFT, RIGHT
-        }
+    enum Side {
+        LEFT, RIGHT
+    }
 
-        static int day3part2() throws IOException {
-            try (Scanner scanner = new Scanner(Paths.get("Day3Test.txt"))) {
-                int toReturn = 0;
-                if(firstTime) {
-                    line = scanner.nextLine();
-                }
-                while(scanner.hasNextLine()) {
-                    nextLine = scanner.nextLine();
-                    toReturn += adjGears();
-                    prevLine = line;
-                    line = nextLine;
-                }
-                nextLine = "";
-                toReturn += adjGears();
-                return toReturn;
-            } catch (Exception e) {
-                throw new IOException();
-            }
-        }
-
-        static int setMultiple(int foundVal, int multiple) {
-            if(multiple == 0) {
-                return foundVal;
-            } else {
-                return multiple * foundVal;
-            }
-        }
-
-        static int adjGears() {
-            int toReturn = 0;
-            int multiple = 0;
-            int partsFound = 0;
-            Pattern gear = Pattern.compile(gearRegex);
-            Matcher gearMatcher = gear.matcher(line);
-            Pattern num = Pattern.compile(digitRegex);
-            Matcher numMatcherPrev = num.matcher(prevLine);
-            Matcher numMatcher = num.matcher(line);
-            Matcher numMatcherNext = num.matcher(nextLine);
-            while(gearMatcher.find()) {
-                boolean doneWithSymbolSearch = false;
-                while(!doneWithSymbolSearch) {
-                    //current line L & R
-                    if(gearMatcher.start() !=0 && sideOfCharHasAdjacentSymbol(line, gearMatcher, digitRegex, Side.LEFT)) {
-                        partsFound++;
-                        while(!numMatcher.find()) {
-                            if(numMatcher.end() == gearMatcher.start()) {
-                                multiple = setMultiple(Integer.parseInt(numMatcher.group()), multiple);
-                                break;
-                            }
-                        }
-                    }
-                    if(gearMatcher.end() < line.length() && sideOfCharHasAdjacentSymbol(line, gearMatcher, digitRegex, Side.RIGHT)) {
-                        partsFound++;
-                        while(!numMatcher.find()) {
-                            if(gearMatcher.end() == numMatcher.start()) {
-                                multiple = setMultiple(Integer.parseInt(numMatcher.group()), partsFound);
-                                break;
-                            }
-                        }
-                    }
-                    //top and bottom line
-                    if(!prevLine.isEmpty()){
-                        while(numMatcherPrev.find()) {
-                            if((numMatcherPrev.end() == gearMatcher.start() || numMatcherPrev.start() == gearMatcher.end()) ||
-                                    (numMatcherPrev.start() <= gearMatcher.start() && numMatcherPrev.end() >= gearMatcher.end())) {
-                                partsFound++;
-                                multiple = setMultiple(Integer.parseInt(numMatcherPrev.group()), multiple);
-                                break;
-                            }
-                        }
-                    }
-                    if(!nextLine.isEmpty()){
-                        while(numMatcherNext.find()) {
-                            if((numMatcherNext.end() == gearMatcher.start() || numMatcherNext.start() == gearMatcher.end()) ||
-                                    (numMatcherNext.start() <= gearMatcher.start() && numMatcherNext.end() >= gearMatcher.end())) {
-                                partsFound++;
-                                multiple = setMultiple(Integer.parseInt(numMatcherNext.group()), multiple);
-                                break;
-                            }
-                        }
-                    }
-                    doneWithSymbolSearch = true;
-                }
-                if(partsFound == 2) {
-                    toReturn += multiple;
-                }
-            }
-            return toReturn;
-        }
-
-        static boolean contains(int leftBound, int rightBound, int left, int right) {
-            return (leftBound <= left && rightBound >= right);
-        }
-
-    static int day3part1() throws IOException {
+    static int day3part2() throws IOException {
+        boolean firstTime = true;
         try (Scanner scanner = new Scanner(Paths.get("Day3.txt"))) {
             int toReturn = 0;
             if(firstTime) {
                 line = scanner.nextLine();
             }
+            firstTime = false;
+            while(scanner.hasNextLine()) {
+                nextLine = scanner.nextLine();
+                toReturn += adjGears();
+                prevLine = line;
+                line = nextLine;
+            }
+            nextLine = "";
+            toReturn += adjGears();
+            return toReturn;
+        } catch (Exception e) {
+            throw new IOException();
+        }
+    }
+
+    static int setMultiple(int foundVal, int multiple) {
+        if(multiple == 0) {
+            return foundVal;
+        } else {
+            return multiple * foundVal;
+        }
+    }
+
+    static int adjGears() {
+        int toReturn = 0;
+        int multiple = 0;
+        int partsFound = 0;
+        Pattern gear = Pattern.compile(gearRegex);
+        Matcher gearMatcher = gear.matcher(line);
+        Pattern num = Pattern.compile(digitRegex);
+        Matcher numMatcherPrev = num.matcher(prevLine);
+        Matcher numMatcher = num.matcher(line);
+        Matcher numMatcherNext = num.matcher(nextLine);
+        while(gearMatcher.find()) {
+            boolean doneWithSymbolSearch = false;
+            while(!doneWithSymbolSearch) {
+                //current line L & R
+                if(gearMatcher.start() !=0 && sideOfCharHasAdjacentSymbol(line, gearMatcher, digitRegex, Side.LEFT)) {
+                    partsFound++;
+                    while(!numMatcher.find()) {
+                        if(numMatcher.end() == gearMatcher.start()) {
+                            multiple = setMultiple(Integer.parseInt(numMatcher.group()), multiple);
+                            break;
+                        }
+                    }
+                }
+                if(gearMatcher.end() < line.length() && sideOfCharHasAdjacentSymbol(line, gearMatcher, digitRegex, Side.RIGHT)) {
+                    partsFound++;
+                    while(!numMatcher.find()) {
+                        if(gearMatcher.end() == numMatcher.start()) {
+                            multiple = setMultiple(Integer.parseInt(numMatcher.group()), multiple);
+                            break;
+                        }
+                    }
+                }
+                //top and bottom line
+                if(!prevLine.isEmpty()) {
+                    while(numMatcherPrev.find()) {
+                        if((numMatcherPrev.end() == gearMatcher.start() || numMatcherPrev.start() == gearMatcher.end()) ||
+                                (numMatcherPrev.start() <= gearMatcher.start() && numMatcherPrev.end() >= gearMatcher.end())) {
+                            partsFound++;
+                            multiple = setMultiple(Integer.parseInt(numMatcherPrev.group()), multiple);
+                            break;
+                        }
+                    }
+                }
+                if(!nextLine.isEmpty()) {
+                    while(numMatcherNext.find()) {
+                        if((numMatcherNext.end() == gearMatcher.start() || numMatcherNext.start() == gearMatcher.end()) ||
+                                (numMatcherNext.start() <= gearMatcher.start() && numMatcherNext.end() >= gearMatcher.end())) {
+                            partsFound++;
+                            multiple = setMultiple(Integer.parseInt(numMatcherNext.group()), multiple);
+                            break;
+                        }
+                    }
+                }
+                doneWithSymbolSearch = true;
+            }
+            if(partsFound == 2) {
+                toReturn += multiple;
+            }
+            multiple = 0;
+            partsFound = 0;
+        }
+        return toReturn;
+    }
+
+    static int day3part1() throws IOException {
+        boolean firstTime = true;
+        try (Scanner scanner = new Scanner(Paths.get("Day3.txt"))) {
+            int toReturn = 0;
+            if(firstTime) {
+                line = scanner.nextLine();
+            }
+            firstTime = false;
             while(scanner.hasNextLine()) {
                 nextLine = scanner.nextLine();
                 toReturn += adjSymbols();
