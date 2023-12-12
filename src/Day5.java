@@ -9,17 +9,14 @@ public class Day5 {
     static final String path = "Day5.txt";
     static long day5part1() throws IOException {
         try(Scanner scanner = new Scanner(Paths.get(path))) {
-            LinkedList<Long> locations = new LinkedList<>();
             Pattern seeds = Pattern.compile("\\d+");
             Matcher seedsMatcher = seeds.matcher(scanner.nextLine());
+            long lowest = Long.MAX_VALUE;
             while(seedsMatcher.find()) {
                 long seed = Long.parseLong(seedsMatcher.group());
-                locations.add(convert(seed));
-            }
-            long lowest = locations.getFirst();
-            for(long loc : locations) {
-                if(loc < lowest) {
-                    lowest = loc;
+                long location = convert(seed);
+                if(lowest > location) {
+                    lowest = location;
                 }
             }
             return lowest;
@@ -44,8 +41,7 @@ public class Day5 {
                         }
                         Matcher matcher = map.matcher(nextLine);
                         matcher.matches();
-                        String test = matcher.group(2);
-                        source = Long.parseLong(test);
+                        source = Long.parseLong(matcher.group(2));
                         destination = Long.parseLong(matcher.group(1));
                         range = Long.parseLong(matcher.group(3));
                         if(contains(finalConverted, source, range)) {
