@@ -1,8 +1,12 @@
 # Compiled class file
 *.class
+*out/*
 
 # Mac
 .DS_Store
 
 # IntelliJ
 *.idea/
+
+# Day inputs
+Day*
