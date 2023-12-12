@@ -24,9 +24,9 @@ public class Day7Tests {
     }
 
     @Test
-    public void strongerHand() {
-        assertEquals("33332", Day7.strongerHand("33332", "2AAAA"));
-        assertEquals("77888", Day7.strongerHand("77888", "77788"));
-        assertEquals("AAAAA", Day7.strongerHand("AAAA4", "AAAAA"));
+    public void weakerHand() {
+        assertEquals("2AAAA", Day7.weakerHand("33332", "2AAAA"));
+        assertEquals("77788", Day7.weakerHand("77888", "77788"));
+        assertEquals("AAAA4", Day7.weakerHand("AAAA4", "AAAAA"));
     }
 }
