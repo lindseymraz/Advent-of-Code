@@ -7,7 +7,9 @@ import java.util.LinkedList;
 import static org.junit.Assert.*;
 
 public class Day9Tests {
-    public Day9Tests() {}
+    public Day9Tests() {
+        Day9.isDay2 = false;
+    }
 
     long firstExampleOriginal[] = new long[]{0, 3, 6, 9, 12, 15};
     long firstExampleFirstSequence[] = new long[]{3, 3, 3, 3, 3};
@@ -128,15 +130,17 @@ public class Day9Tests {
         assertEquals(23, Day9.fillValue(8, thirdExampleFirstSequence));
         assertEquals(68, Day9.fillValue(23, thirdExampleOriginal));
 
-        assertEquals(2, Day9.fillValue(0, thirdExampleThirdSequence));
-        assertEquals(8, Day9.fillValue(2, thirdExampleSecondSequence));
-        assertEquals(23, Day9.fillValue(8, thirdExampleFirstSequence));
-        assertEquals(68, Day9.fillValue(23, thirdExampleOriginal));
-
         assertEquals(-23, Day9.fillValue(0, fourthExampleThirdSequence));
         assertEquals(-58, Day9.fillValue(-23, fourthExampleSecondSequence));
         assertEquals(-92, Day9.fillValue(-58, fourthExampleFirstSequence));
         assertEquals(-122, Day9.fillValue(-92, fourthExampleOriginal));
+
+        Day9.isDay2 = true;
+
+        assertEquals(2, Day9.fillValue(0, thirdExampleThirdSequence));
+        assertEquals(-2, Day9.fillValue(2, thirdExampleSecondSequence));
+        assertEquals(5, Day9.fillValue(-2, thirdExampleFirstSequence));
+        assertEquals(5, Day9.fillValue(5, thirdExampleOriginal));
     }
 
     @Test
@@ -146,6 +150,11 @@ public class Day9Tests {
         assertEquals(68, Day9.getLastFilledValue(0, testThree.size() - 2, testThree));
         assertEquals(-122, Day9.getLastFilledValue(0, testFour.size() - 2, testFour));
 
+        Day9.isDay2 = true;
+
+        assertEquals(5, Day9.getLastFilledValue(0, testThree.size() - 2, testThree));
+        assertEquals(-3, Day9.getLastFilledValue(0, testOne.size() - 2, testOne));
+        assertEquals(0, Day9.getLastFilledValue(0, testTwo.size() - 2, testTwo));
     }
 
     @Test
@@ -154,6 +163,5 @@ public class Day9Tests {
         assertEquals(36, Day9.sumFilledValues(0, testTwo.size() - 2, testTwo, 0));
         assertEquals(101, Day9.sumFilledValues(0, testThree.size() - 2, testThree, 0));
         assertEquals(-295, Day9.sumFilledValues(0, testFour.size() - 2, testFour, 0));
-
     }
 }

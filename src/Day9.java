@@ -13,6 +13,19 @@ public class Day9 {
     private static final String realPath = "Day9.txt";
     private static final String testPath1 = "src/tests/Day9Part1Test.txt";
     private static final String Path = testPath1;
+
+    static boolean isDay2 = false;
+
+    public static long day9part2() throws Exception {
+        isDay2 = true;
+        long[][] histories = parseHistories(realPath, 200);
+        long acc = 0;
+        for(int i = 0; i < histories.length; i++) {
+            LinkedList<long[]> lines = getAllSequences(histories[i], new LinkedList<long[]>());//first thing in list will be the original history
+            acc += getLastFilledValue(0, lines.size() - 2, lines);
+        }
+        return acc;
+    }
     public static long day9part1() throws Exception {
         long[][] histories = parseHistories(realPath, 200);
         long acc = 0;
@@ -76,6 +89,9 @@ public class Day9 {
     }
 
     static long fillValue(long topVal, long[] lineBelow) {
+        if(isDay2) {
+            return lineBelow[0] - topVal;
+        }
         return lineBelow[lineBelow.length - 1] + topVal;
     }
 
