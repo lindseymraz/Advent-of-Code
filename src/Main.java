@@ -5,8 +5,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
-    public static void main(String args[]) throws IOException {
-        System.out.println(Day8.day8part2());
+    public static void main(String args[]) throws Exception {
+        System.out.println(Day9.day9part1());
     }
 
 }
