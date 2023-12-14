@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String args[]) throws Exception {
-        System.out.println(Day9.day9part2());
+        System.out.println(Day8.day8part2());
     }
 
 }

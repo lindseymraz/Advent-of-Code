@@ -7,25 +7,17 @@ import static java.lang.Math.toIntExact;
 public class Day8 {
 
     private static final String realPath = "Day8.txt";
-
     private static final String testPath1 = "src/tests/Day8Part1Test1.txt";
-
     private static final String testPath2 = "src/tests/Day8Part1Test2.txt";
-
     private static final String testPath3 = "src/tests/Day8Part2Test.txt";
-
     private static final String Path = realPath;
-
     private static String directions = "";
-
     private static Map<String, Node> map;
-
     static long count = 0;
-
-    static int part2Count = 0; //for when you've moved on all of your As
-
+    static long part2Count = 0; //for when you've moved on all of your As
     static int tempCount = 0;
 
+    static int lastPlaceInString = 0;
     class Node {
 
         String name;
@@ -43,16 +35,31 @@ public class Day8 {
             map = makeMap();
             boolean there = false;
             ArrayList<String> starts = makeStarts();
-            ArrayList<String> dests = (ArrayList<String>) starts.clone();
+            ArrayList<String> dests = (ArrayList<String>) makeStarts().clone();
+            int placeToStart = 0;
             while(!there) {
+                long highest = 0;
                 int Zs = 0;
-                for (int i = 0; i < starts.size(); i++) {
-                    dests.set(i, traversalPart2(dests.get(i)));
-                    if(dests.get(i).matches("\\w\\wZ")) {
-                        Zs++;
+                for (int i = 0; i < starts.size(); i++) {//find the one that took the most steps to hit Z
+                    lastPlaceInString = placeToStart;
+                    traversalPart2(dests.get(i), true); //traverse till you hit a Z, starting from the spot we saved in the next for loop
+                    if(highest < count) {
+                        highest = count;
                     }
+                    count = 0;
                 }
-                part2Count++;
+                for (int i = 0; i < starts.size(); i++) { //move them all up to that spot, and count how many still end in Z, save spot
+                    lastPlaceInString = placeToStart;
+                    //start from the place you started the first time, which is usually the same as where you ended here
+                    String endedAt = traversalPart2V2(dests.get(i), highest);
+                    if(endedAt.matches("..Z")) {
+                       Zs++;
+                    }
+                    dests.set(i, endedAt);
+                    count = 0;
+                }
+                placeToStart = lastPlaceInString;
+                part2Count += highest;
                 if(Zs == starts.size()) {
                     return part2Count;
                 }
@@ -70,24 +77,72 @@ public class Day8 {
         scanner.nextLine();
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
-            if(line.matches("\\w\\wA.*")) {
+            if(line.matches("..A.*")) {
                 starts.add(line.substring(0, 3));
             }
         }
         return starts;
     }
 
-    static String traversalPart2(String dest) {
-        if(tempCount == 1) {
+    static String traversalPart2V2(String dest, long highest) {
+        String result = traversalPart2V2Helper(dest, highest);
+        while(count != highest) {
+            result = traversalPart2V2(result, highest);
+        }
+        return result;
+    }
+
+    static String traversalPart2V2Helper(String dest, long highest) {
+        if(lastPlaceInString == directions.length()) {
+            lastPlaceInString = 0;
+        }
+        if(tempCount == 5000 || count == highest) {
             tempCount = 0;
             return dest;
         }
-        if(directions.substring((part2Count % directions.length()), (part2Count % directions.length() + 1)).equals("L")) {
+        if(directions.substring((lastPlaceInString % directions.length()), (lastPlaceInString % directions.length() + 1)).equals("L")) {
+            count++;
             tempCount++;
-            return traversalPart2(map.get(dest).left);
+            lastPlaceInString++;
+            return traversalPart2V2Helper(map.get(dest).left, highest);
         } else {
+            count++;
             tempCount++;
-            return traversalPart2(map.get(dest).right);
+            lastPlaceInString++;
+            return traversalPart2V2Helper(map.get(dest).right, highest);
+        }
+    }
+
+    static String traversalPart2(String dest, boolean firstTime) {
+        String result = traversalPart2Helper(dest, true);
+        while(!result.matches("..Z")) {
+            result = traversalPart2(result, false);
+        }
+        return result;
+    }
+
+    static String traversalPart2Helper(String dest, boolean firstTime) {
+        if(lastPlaceInString == directions.length()) {
+            lastPlaceInString = 0;
+        }
+        if(!firstTime && dest.matches("..Z")) {
+            tempCount = 0;
+            return dest;
+        }
+        if(tempCount == 5000) {
+            tempCount = 0;
+            return dest;
+        }
+        if(directions.substring((lastPlaceInString % directions.length()), (lastPlaceInString % directions.length() + 1)).equals("L")) {
+            count++;
+            tempCount++;
+            lastPlaceInString++;
+            return traversalPart2Helper(map.get(dest).left, false);
+        } else {
+            count++;
+            tempCount++;
+            lastPlaceInString++;
+            return traversalPart2Helper(map.get(dest).right, false);
         }
     }
 
