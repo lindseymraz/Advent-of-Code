@@ -18,7 +18,7 @@ public class Day9 {
 
     public static long day9part2() throws Exception {
         isDay2 = true;
-        long[][] histories = parseHistories(realPath, 200);
+        long[][] histories = parseHistories(Path, 200);
         long acc = 0;
         for(int i = 0; i < histories.length; i++) {
             LinkedList<long[]> lines = getAllSequences(histories[i], new LinkedList<long[]>());//first thing in list will be the original history
@@ -27,7 +27,7 @@ public class Day9 {
         return acc;
     }
     public static long day9part1() throws Exception {
-        long[][] histories = parseHistories(realPath, 200);
+        long[][] histories = parseHistories(Path, 200);
         long acc = 0;
         for(int i = 0; i < histories.length; i++) {
             LinkedList<long[]> lines = getAllSequences(histories[i], new LinkedList<long[]>());//first thing in list will be the original history

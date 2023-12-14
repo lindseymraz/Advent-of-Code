@@ -3,6 +3,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class Day7Tests {
+
+    public Day7Tests() {}
     @Test
     public void typeHand() {
         assertEquals(7, Day7.typeHand("AAAAA"));
