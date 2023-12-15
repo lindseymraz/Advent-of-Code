@@ -44,6 +44,7 @@ public class Day11Tests {
 
     @Test
     public void makeXOffsets() throws IOException {
+        Day11.setIsPart2(false);
         Day11.setPathToTestPath1();
         int[] test = new int[]{0, 0, 0, 1, 1, 1, 2, 2, 2, 3};
         assertTrue(Arrays.equals(test, Day11.makeXOffsets()));
@@ -54,6 +55,7 @@ public class Day11Tests {
 
     @Test
     public void makeYOffsets() throws IOException {
+        Day11.setIsPart2(false);
         Day11.setPathToTestPath1();
         int[] test = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 2, 2};
         assertTrue(Arrays.equals(test, Day11.makeYOffsets()));
@@ -74,6 +76,7 @@ public class Day11Tests {
 
     @Test
     public void makeGalaxyArray() throws IOException {
+        Day11.setIsPart2(false);
         Day11.setPathToTestPath1();
         int[][] test = new int[][]{new int[]{4,0}, new int[]{9,1}, new int[]{0,2}, new int[]{8,5},
                 new int[]{1,6}, new int[]{12,7}, new int[]{9,10}, new int[]{0,11}, new int[]{5,11}};
@@ -93,8 +96,14 @@ public class Day11Tests {
     }
 
     @Test
-    public void day11part1() throws IOException {
+    public void testWholeProblem() throws IOException {
+        Day11.setIsPart2(false);
         Day11.setPathToTestPath1();
         assertEquals(374, Day11.day11part1());
+        Day11.setIsPart2(true);
+        Day11.setPart2GalaxyExpansionValue(10);
+        assertEquals(1030, Day11.day11part2());
+        Day11.setPart2GalaxyExpansionValue(100);
+        assertEquals(8410, Day11.day11part2());
     }
 }

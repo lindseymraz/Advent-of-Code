@@ -15,6 +15,15 @@ public class Day11 {
 
     private static int charsPerLine = 0;
 
+    private static boolean isPart2 = false;
+
+    private static int part2GalaxyExpansionValue = 1000000;
+
+    static long day11part2() throws IOException {
+        setIsPart2(true);
+        return day11part1();
+    }
+
     static long day11part1() throws IOException {
         long distance = 0;
         int[][] galaxyArray = makeGalaxyArray();
@@ -68,7 +77,11 @@ public class Day11 {
         for(int i = 0; i < charsPerLine; i++) {
             if(!columnHasGalaxy[i]) {
                 for(int j = i + 1; j < charsPerLine; j++) {
-                    xOffsets[j] += 1;
+                    if(isPart2) {
+                        xOffsets[j] += (part2GalaxyExpansionValue - 1);
+                    } else {
+                        xOffsets[j] += 1;
+                    }
                 }
             }
         }
@@ -89,7 +102,11 @@ public class Day11 {
             matcher = galaxy.matcher(line);
             if(line.matches(emptyLineRegex)) {
                 for(int j = i + 1; j < linesPerFile; j++) {
-                    yOffsets[j] += 1;
+                    if(isPart2) {
+                        yOffsets[j] += (part2GalaxyExpansionValue - 1);
+                    } else {
+                        yOffsets[j] += 1;
+                    }
                 }
             }
             i++;
@@ -162,5 +179,13 @@ public class Day11 {
 
     static void setCharsPerLine() throws IOException {
         charsPerLine = charsPerLine();
+    }
+
+    static void setIsPart2(boolean truthVal) {
+        isPart2 = truthVal;
+    }
+
+    static void setPart2GalaxyExpansionValue(int val) {
+        part2GalaxyExpansionValue = val;
     }
 }
