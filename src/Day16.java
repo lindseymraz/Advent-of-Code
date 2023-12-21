@@ -95,6 +95,57 @@ public class Day16 {
         }
     }
 
+    public static int day16part2() throws Exception {
+        linesPerFile = Utilities.linesPerFile(Path);
+        charsPerLine = Utilities.charsPerLine(Path);
+        chars[][] layoutGrid = createLayoutGrid();
+        boolean[][] energizedGrid = createEnergizedGrid();
+        int highest = 0;
+        highest = day16part2helper(highest, dirs.UP, layoutGrid, energizedGrid);
+        highest = day16part2helper(highest, dirs.LEFT, layoutGrid, energizedGrid);
+        highest = day16part2helper(highest, dirs.DOWN, layoutGrid, energizedGrid);
+        highest = day16part2helper(highest, dirs.RIGHT, layoutGrid, energizedGrid);
+        return highest;
+    }
+
+    public static int day16part2helper(int highest, dirs dir, chars[][] layoutGrid, boolean[][] energizedGrid) throws Exception {
+        int count = 0;
+        int limitForLoop = 0;
+        switch(dir) {
+            case UP, DOWN: limitForLoop = charsPerLine;
+            case LEFT, RIGHT: limitForLoop = linesPerFile;
+        }
+        for(int j = 0; j < limitForLoop; j++) {
+            boolean done = false;
+            switch(dir) {
+                case UP: traverse(a.new State(dirs.UP, j, linesPerFile), layoutGrid, energizedGrid); break;
+                case DOWN: traverse(a.new State(dirs.DOWN, j, -1), layoutGrid, energizedGrid); break;
+                case LEFT: traverse(a.new State(dirs.LEFT, charsPerLine, j), layoutGrid, energizedGrid); break;
+                case RIGHT: traverse(a.new State(dirs.RIGHT, -1, j), layoutGrid, energizedGrid); break;
+            }
+            while (!done) {
+                if (startList.isEmpty()) {
+                    done = true;
+                }
+                int limit = startList.size();
+                LinkedList<State> temp = (LinkedList<State>) startList.clone();
+                for (int i = 0; i < limit; i++) {
+                    traverse(temp.get(i), layoutGrid, energizedGrid);
+                }
+                for (int i = 0; i < limit; i++) {
+                    startList.remove();
+                }
+            }
+            count = countEnergizedTiles(energizedGrid);
+            if (count > highest) {
+                highest = count;
+            }
+            resetEnergizedGrid(energizedGrid);
+            visited.clear();
+        }
+        return highest;
+    }
+
     public static int day16part1() throws Exception {
         linesPerFile = Utilities.linesPerFile(Path);
         charsPerLine = Utilities.charsPerLine(Path);
@@ -176,6 +227,14 @@ public class Day16 {
         }
         scanner.close();
         return toReturn;
+    }
+
+    static void resetEnergizedGrid(boolean[][] energizedGrid) throws IOException {
+        for(int i = 0; i < linesPerFile; i++) {
+            for(int j = 0; j < charsPerLine; j++) {
+                energizedGrid[i][j] = false;
+            }
+        }
     }
 
     static int countEnergizedTiles(boolean[][] energizedGrid) {

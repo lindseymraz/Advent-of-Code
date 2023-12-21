@@ -27,4 +27,9 @@ public class Day16Tests {
         Day16.setPathToTestPath();
         assertEquals(46, Day16.day16part1());
     }
+
+    @Test public void day16part2() throws Exception {
+        Day16.setPathToTestPath();
+        assertEquals(51, Day16.day16part2());
+    }
 }
