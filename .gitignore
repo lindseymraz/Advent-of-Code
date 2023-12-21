@@ -10,4 +10,4 @@
 *.iml
 
 # Day inputs
-Day*
+/Day*.txt
