@@ -35,24 +35,6 @@ public class Day11 {
         return distance;
     }
 
-    static int charsPerLine() throws IOException {
-        Scanner scanner = new Scanner(Paths.get(Path));
-        String line = scanner.nextLine();
-        scanner.close();
-        return line.length();
-    }
-
-    static int linesPerFile() throws IOException {
-        Scanner scanner = new Scanner(Paths.get(Path));
-        int lines = 0;
-        while(scanner.hasNextLine()) {
-            scanner.nextLine();
-            lines++;
-        }
-        scanner.close();
-        return lines;
-    }
-
     static boolean[] makeColumnHasGalaxy() throws IOException {
         Scanner scanner = new Scanner(Paths.get(Path));
         setCharsPerLine();
@@ -89,7 +71,7 @@ public class Day11 {
     }
 
     static int[] makeYOffsets() throws IOException {
-        int linesPerFile = linesPerFile();
+        int linesPerFile = Utilities.linesPerFile(Path);
         int[] yOffsets = new int[linesPerFile];
         Scanner scanner = new Scanner(Paths.get(Path));
         String emptyLineRegex = "\\.{" + charsPerLine + "}";
@@ -178,7 +160,7 @@ public class Day11 {
     }
 
     static void setCharsPerLine() throws IOException {
-        charsPerLine = charsPerLine();
+        charsPerLine = Utilities.charsPerLine(Path);
     }
 
     static void setIsPart2(boolean truthVal) {

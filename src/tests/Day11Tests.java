@@ -13,21 +13,21 @@ public class Day11Tests {
     @Test
     public void charsPerLine() throws IOException {
         Day11.setPathToTestPath1();
-        assertEquals(10, Day11.charsPerLine());
+        assertEquals(10, Utilities.charsPerLine("src/tests/Day11Part1Test.txt"));
         Day11.setPathToTestPath2();
-        assertEquals(10, Day11.charsPerLine());
+        assertEquals(10, Utilities.charsPerLine("src/tests/Day11Part1Test2.txt"));
         Day11.setPathToRealPath();
-        assertEquals(140, Day11.charsPerLine());
+        assertEquals(140, Utilities.charsPerLine("Day11.txt"));
     }
 
     @Test
     public void linesPerFile() throws IOException {
         Day11.setPathToTestPath1();
-        assertEquals(10, Day11.linesPerFile());
+        assertEquals(10, Utilities.linesPerFile("src/tests/Day11Part1Test.txt"));
         Day11.setPathToTestPath2();
-        assertEquals(10, Day11.linesPerFile());
+        assertEquals(10, Utilities.linesPerFile("src/tests/Day11Part1Test2.txt"));
         Day11.setPathToRealPath();
-        assertEquals(140, Day11.linesPerFile());
+        assertEquals(140, Utilities.linesPerFile("Day11.txt"));
     }
 
     @Test
