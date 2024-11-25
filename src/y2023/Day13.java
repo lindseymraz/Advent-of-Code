@@ -1,3 +1,5 @@
+package y2023;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -6,9 +8,9 @@ import java.util.regex.Pattern;
 
 public class Day13 {
 
-    static final String realPath = "Day13.txt";
-    static final String testPath1 = "src/tests/Day13Part1Test.txt";
-    static final String testPath2 = "src/tests/Day13Part1Test2.txt";
+    static final String realPath = "y2023.Day13.txt";
+    static final String testPath1 = "src/y2023.tests/Day13Part1Test.txt";
+    static final String testPath2 = "src/y2023.tests/Day13Part1Test2.txt";
 
     static String Path = realPath;
     static int patternsInFile = 0;

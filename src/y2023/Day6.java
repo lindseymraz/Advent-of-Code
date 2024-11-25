@@ -1,3 +1,5 @@
+package y2023;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -6,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class Day6 {
 
-    static final String path = "Day6.txt";
+    static final String path = "y2023.Day6.txt";
 
     public static long day6part2() throws IOException {
         try(Scanner scanner = new Scanner(Paths.get(path))) {

@@ -1,22 +1,16 @@
-import java.io.BufferedReader;
+package y2023;
+
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 public class Day10 {
 
-    private static final String realPath = "Day10.txt";
-    private static final String testPath1 = "src/tests/Day10Part1Test.txt";
-    private static final String testPath2 = "src/tests/Day10Part1Test2.txt";
-    private static final String testPath3 = "src/tests/Day10Part1Test3.txt";
-    private static final String testPath4 = "src/tests/Day10Part1Test4.txt";
+    private static final String realPath = "y2023.Day10.txt";
+    private static final String testPath1 = "src/y2023.tests/Day10Part1Test.txt";
+    private static final String testPath2 = "src/y2023.tests/Day10Part1Test2.txt";
+    private static final String testPath3 = "src/y2023.tests/Day10Part1Test3.txt";
+    private static final String testPath4 = "src/y2023.tests/Day10Part1Test4.txt";
     private static final String Path = realPath;
 
     public enum DIR {

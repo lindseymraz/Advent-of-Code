@@ -1,3 +1,5 @@
+package y2023;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.*;
@@ -5,8 +7,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Day7 {
-    static final String realPath = "Day7.txt";
-    static final String testPath = "src/tests/Day7Test.txt";
+    static final String realPath = "y2023.Day7.txt";
+    static final String testPath = "src/y2023.tests/Day7Test.txt";
 
     static boolean part2 = true;
 

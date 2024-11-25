@@ -1,5 +1,6 @@
+package y2023;
+
 import java.io.IOException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -7,8 +8,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Day15 {
-    private static final String testPath = "src/tests/Day15Part1Test.txt";
-    private static final String realPath = "Day15.txt";
+    private static final String testPath = "src/y2023.tests/Day15Part1Test.txt";
+    private static final String realPath = "y2023.Day15.txt";
     static String Path = realPath;
 
     public class Lens {

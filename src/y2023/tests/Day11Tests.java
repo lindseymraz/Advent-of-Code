@@ -1,5 +1,6 @@
 
 import org.junit.Test;
+import y2023.Day11;
 
 
 import java.io.IOException;
@@ -13,21 +14,21 @@ public class Day11Tests {
     @Test
     public void charsPerLine() throws IOException {
         Day11.setPathToTestPath1();
-        assertEquals(10, Utilities.charsPerLine("src/tests/Day11Part1Test.txt"));
+        assertEquals(10, Utilities.charsPerLine("src/y2023.tests/Day11Part1Test.txt"));
         Day11.setPathToTestPath2();
-        assertEquals(10, Utilities.charsPerLine("src/tests/Day11Part1Test2.txt"));
+        assertEquals(10, Utilities.charsPerLine("src/y2023.tests/Day11Part1Test2.txt"));
         Day11.setPathToRealPath();
-        assertEquals(140, Utilities.charsPerLine("Day11.txt"));
+        assertEquals(140, Utilities.charsPerLine("y2023.Day11.txt"));
     }
 
     @Test
     public void linesPerFile() throws IOException {
         Day11.setPathToTestPath1();
-        assertEquals(10, Utilities.linesPerFile("src/tests/Day11Part1Test.txt"));
+        assertEquals(10, Utilities.linesPerFile("src/y2023.tests/Day11Part1Test.txt"));
         Day11.setPathToTestPath2();
-        assertEquals(10, Utilities.linesPerFile("src/tests/Day11Part1Test2.txt"));
+        assertEquals(10, Utilities.linesPerFile("src/y2023.tests/Day11Part1Test2.txt"));
         Day11.setPathToRealPath();
-        assertEquals(140, Utilities.linesPerFile("Day11.txt"));
+        assertEquals(140, Utilities.linesPerFile("y2023.Day11.txt"));
     }
 
     @Test

@@ -1,12 +1,8 @@
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import y2023.Day19;
 
 public class Main {
     public static void main(String args[]) throws Exception {
-        System.out.println(Day19.day19part1());
+        System.out.println("Test");
     }
 
 }

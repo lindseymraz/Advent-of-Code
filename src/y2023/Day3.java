@@ -1,3 +1,5 @@
+package y2023;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -19,7 +21,7 @@ public class Day3 {
 
     static int day3part2() throws IOException {
         boolean firstTime = true;
-        try (Scanner scanner = new Scanner(Paths.get("Day3.txt"))) {
+        try (Scanner scanner = new Scanner(Paths.get("y2023.Day3.txt"))) {
             int toReturn = 0;
             if(firstTime) {
                 line = scanner.nextLine();
@@ -115,7 +117,7 @@ public class Day3 {
 
     static int day3part1() throws IOException {
         boolean firstTime = true;
-        try (Scanner scanner = new Scanner(Paths.get("Day3.txt"))) {
+        try (Scanner scanner = new Scanner(Paths.get("y2023.Day3.txt"))) {
             int toReturn = 0;
             if(firstTime) {
                 line = scanner.nextLine();

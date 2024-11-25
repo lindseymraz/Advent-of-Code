@@ -1,6 +1,5 @@
 import org.junit.Test;
-
-import java.io.IOException;
+import y2023.Day5;
 
 import static org.junit.Assert.*;
 
@@ -20,8 +19,8 @@ public class Day5Tests {
    /*
     @Test
     public void sourceContains() throws IOException {
-        Day5 e = new Day5();
-        Day5.Mapping f = e.new Mapping(15, 0, 37);
+        y2023.Day5 e = new y2023.Day5();
+        y2023.Day5.Mapping f = e.new Mapping(15, 0, 37);
         assertTrue(f.sourceContains(30, 31)); //within
         assertTrue(f.sourceContains(14, 15)); //left boundary
         assertTrue(f.sourceContains(51, 57)); //right boundary
@@ -33,8 +32,8 @@ public class Day5Tests {
 
     @Test
     public void mappingContains() throws IOException {
-        Day5 e = new Day5();
-        Day5.Mapping f = e.new Mapping(30, 10, 11);
+        y2023.Day5 e = new y2023.Day5();
+        y2023.Day5.Mapping f = e.new Mapping(30, 10, 11);
         assertTrue(f.destContains(13, 15)); //within
         assertTrue(f.destContains(0, 10)); //left boundary
         assertTrue(f.destContains(20, 23)); //right boundary

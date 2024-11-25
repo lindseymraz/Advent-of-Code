@@ -1,3 +1,5 @@
+package y2023;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.LinkedList;
@@ -6,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Day5 {
-    static final String path = "Day5.txt";
+    static final String path = "y2023.Day5.txt";
     static long day5part1() throws IOException {
         try(Scanner scanner = new Scanner(Paths.get(path))) {
             Pattern seeds = Pattern.compile("\\d+");

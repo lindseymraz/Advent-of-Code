@@ -1,3 +1,5 @@
+package y2023;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -10,7 +12,7 @@ import java.util.regex.Pattern;
 public class Day4 {
     static int lines = 196;
     static int day4part2() throws IOException {
-        try (Scanner scanner = new Scanner(Paths.get("Day4.txt"))) {
+        try (Scanner scanner = new Scanner(Paths.get("y2023.Day4.txt"))) {
             String line = "";
             int[] cards = new int[lines]; //index is (card number - 1), value is the amount of that card you have
             Arrays.fill(cards, 1);
@@ -46,7 +48,7 @@ public class Day4 {
         } catch (Exception e) { throw new IOException(); }
     }
     static int day4part1() throws IOException {
-        try (Scanner scanner = new Scanner(Paths.get("Day4.txt"))) {
+        try (Scanner scanner = new Scanner(Paths.get("y2023.Day4.txt"))) {
             int toReturn = 0;
             String line = "";
             while(scanner.hasNextLine()) {

@@ -1,6 +1,5 @@
 import org.junit.Test;
-
-import java.io.IOException;
+import y2023.Day6;
 
 import static org.junit.Assert.*;
 public class Day6Tests {

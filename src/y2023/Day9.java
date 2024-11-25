@@ -1,3 +1,5 @@
+package y2023;
+
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.nio.file.Paths;
@@ -10,8 +12,8 @@ import java.util.regex.Pattern;
 
 
 public class Day9 {
-    private static final String realPath = "Day9.txt";
-    private static final String testPath1 = "src/tests/Day9Part1Test.txt";
+    private static final String realPath = "y2023.Day9.txt";
+    private static final String testPath1 = "src/y2023.tests/Day9Part1Test.txt";
     private static final String Path = testPath1;
 
     static boolean isDay2 = false;

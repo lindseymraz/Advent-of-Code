@@ -1,12 +1,14 @@
+package y2023;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Day16 {
-    private static final String testPath = "src/tests/Day16Part1Test.txt";
+    private static final String testPath = "src/y2023.tests/Day16Part1Test.txt";
 
-    private static final String realPath = "Day16.txt";
+    private static final String realPath = "y2023.Day16.txt";
     static String Path = realPath;
 
     static int linesPerFile = 0;

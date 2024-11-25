@@ -1,3 +1,5 @@
+package y2023;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -6,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class Day1 {
     static int day1part2() throws IOException {
-        try (Scanner scanner = new Scanner(Paths.get("Day1.txt"))) {
+        try (Scanner scanner = new Scanner(Paths.get("y2023.Day1.txt"))) {
             int toReturn = 0;
             String newNum = "";
             String line = "";
@@ -48,7 +50,7 @@ public class Day1 {
     }
 
     static int day1part1() throws IOException {
-        try(Scanner scanner = new Scanner(Paths.get("Day1.txt"))) {
+        try(Scanner scanner = new Scanner(Paths.get("y2023.Day1.txt"))) {
             int toReturn = 0;
             String line = "";
             String newNum = "";

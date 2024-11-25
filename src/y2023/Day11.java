@@ -1,3 +1,5 @@
+package y2023;
+
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.nio.file.Paths;
@@ -8,9 +10,9 @@ import java.util.regex.Pattern;
 
 public class Day11 {
     static String galaxyRegex = "\\#";
-    private static final String realPath = "Day11.txt";
-    private static final String testPath1 = "src/tests/Day11Part1Test.txt";
-    private static final String testPath2 = "src/tests/Day11Part1Test2.txt";
+    private static final String realPath = "y2023.Day11.txt";
+    private static final String testPath1 = "src/y2023.tests/Day11Part1Test.txt";
+    private static final String testPath2 = "src/y2023.tests/Day11Part1Test2.txt";
     private static String Path = realPath;
 
     private static int charsPerLine = 0;

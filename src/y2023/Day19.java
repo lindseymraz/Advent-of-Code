@@ -1,3 +1,5 @@
+package y2023;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -6,8 +8,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Day19 {
-    static final String testPath = "src/tests/Day19Part1Test.txt";
-    static final String realPath = "Day19.txt";
+    static final String testPath = "src/y2023.tests/Day19Part1Test.txt";
+    static final String realPath = "y2023.Day19.txt";
     static String Path = realPath;
     static HashMap<String, String> workflows;
     static ArrayList<Integer[]> partsRated;

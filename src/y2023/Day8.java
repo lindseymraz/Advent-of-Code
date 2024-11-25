@@ -1,3 +1,5 @@
+package y2023;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.*;
@@ -6,10 +8,10 @@ import static java.lang.Math.toIntExact;
 
 public class Day8 {
 
-    private static final String realPath = "Day8.txt";
-    private static final String testPath1 = "src/tests/Day8Part1Test1.txt";
-    private static final String testPath2 = "src/tests/Day8Part1Test2.txt";
-    private static final String testPath3 = "src/tests/Day8Part2Test.txt";
+    private static final String realPath = "y2023.Day8.txt";
+    private static final String testPath1 = "src/y2023.tests/Day8Part1Test1.txt";
+    private static final String testPath2 = "src/y2023.tests/Day8Part1Test2.txt";
+    private static final String testPath3 = "src/y2023.tests/Day8Part2Test.txt";
     private static final String Path = realPath;
     private static String directions = "";
     private static Map<String, Node> map;
