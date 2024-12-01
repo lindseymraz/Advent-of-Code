@@ -1,5 +1,7 @@
 package y2023;
 
+import shared.Utilities;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.LinkedList;
@@ -78,7 +80,7 @@ public class Day16 {
         }
     }
 
-    enum chars { EMPTY, MIRRORLEFT, MIRRORRIGHT, SPLITTERVERT, SPLITTERHORIZ; }
+    public enum chars { EMPTY, MIRRORLEFT, MIRRORRIGHT, SPLITTERVERT, SPLITTERHORIZ; }
 
     class State {
         dirs dir;
@@ -195,7 +197,7 @@ public class Day16 {
         startList.add(a.new State(newDir, newX, newY));
     }
 
-    static chars[][] createLayoutGrid() throws IOException {
+    public static chars[][] createLayoutGrid() throws IOException {
         chars[][] toReturn = new chars[linesPerFile][charsPerLine];
         Scanner scanner = new Scanner(Paths.get(Path));
         String line = "";
@@ -253,7 +255,7 @@ public class Day16 {
         return toReturn;
     }
 
-    static void setPathToTestPath() throws IOException {
+    public static void setPathToTestPath() throws IOException {
         Path = testPath;
         linesPerFile = Utilities.linesPerFile(Path);
         charsPerLine = Utilities.charsPerLine(Path);

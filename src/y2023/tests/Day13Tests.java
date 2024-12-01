@@ -1,3 +1,5 @@
+package y2023.tests;
+
 import org.junit.Test;
 import org.junit.Assert;
 import y2023.Day13;

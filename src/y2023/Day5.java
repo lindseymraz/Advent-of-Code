@@ -66,7 +66,7 @@ public class Day5 {
      * @param containerRange
      * @return
      */
-    static boolean contains(long i, long containerStart, long containerRange) {
+    public static boolean contains(long i, long containerStart, long containerRange) {
         return(i >= containerStart && (i <= (containerStart + containerRange - 1) || i == containerStart));
     }
 

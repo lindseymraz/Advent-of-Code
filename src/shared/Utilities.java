@@ -1,3 +1,5 @@
+package shared;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Scanner;

@@ -1,5 +1,7 @@
 package y2023;
 
+import shared.Utilities;
+
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.nio.file.Paths;
@@ -21,12 +23,12 @@ public class Day11 {
 
     private static int part2GalaxyExpansionValue = 1000000;
 
-    static long day11part2() throws IOException {
+    public static long day11part2() throws IOException {
         setIsPart2(true);
         return day11part1();
     }
 
-    static long day11part1() throws IOException {
+    public static long day11part1() throws IOException {
         long distance = 0;
         int[][] galaxyArray = makeGalaxyArray();
         for(int i = 0; i < galaxyArray.length - 1; i++) {
@@ -37,7 +39,7 @@ public class Day11 {
         return distance;
     }
 
-    static boolean[] makeColumnHasGalaxy() throws IOException {
+    public static boolean[] makeColumnHasGalaxy() throws IOException {
         Scanner scanner = new Scanner(Paths.get(Path));
         setCharsPerLine();
         boolean[] columnHasGalaxy = new boolean[charsPerLine];
@@ -55,7 +57,7 @@ public class Day11 {
         return columnHasGalaxy;
     }
 
-    static int[] makeXOffsets() throws IOException {
+    public static int[] makeXOffsets() throws IOException {
         boolean[] columnHasGalaxy = makeColumnHasGalaxy();
         int[] xOffsets = new int[charsPerLine];
         for(int i = 0; i < charsPerLine; i++) {
@@ -72,7 +74,7 @@ public class Day11 {
         return xOffsets;
     }
 
-    static int[] makeYOffsets() throws IOException {
+    public static int[] makeYOffsets() throws IOException {
         int linesPerFile = Utilities.linesPerFile(Path);
         int[] yOffsets = new int[linesPerFile];
         Scanner scanner = new Scanner(Paths.get(Path));
@@ -99,7 +101,7 @@ public class Day11 {
         return yOffsets;
     }
 
-    static int countGalaxies() throws IOException {
+    public static int countGalaxies() throws IOException {
         Scanner scanner = new Scanner(Paths.get(Path));
         int galaxies = 0;
         String line;
@@ -116,7 +118,7 @@ public class Day11 {
         return galaxies;
     }
 
-    static int[][] makeGalaxyArray() throws IOException {
+    public static int[][] makeGalaxyArray() throws IOException {
         int[] xOffsets = makeXOffsets();
         int[] yOffsets = makeYOffsets();
         int[][] galaxyArray = new int[countGalaxies()][2];
@@ -139,24 +141,24 @@ public class Day11 {
         scanner.close();
         return galaxyArray;
     }
-    static int distance(int xCoord1, int yCoord1, int xCoord2, int yCoord2) {
+    public static int distance(int xCoord1, int yCoord1, int xCoord2, int yCoord2) {
         return Math.abs(yCoord2 - yCoord1) + Math.abs(xCoord2 - xCoord1);
     }
 
     /**
      * for testing
      */
-    static void setPathToTestPath1() throws IOException {
+    public static void setPathToTestPath1() throws IOException {
         Path = testPath1;
         setCharsPerLine();
     }
 
-    static void setPathToTestPath2() throws IOException {
+    public static void setPathToTestPath2() throws IOException {
         Path = testPath2;
         setCharsPerLine();
     }
 
-    static void setPathToRealPath() throws IOException {
+    public static void setPathToRealPath() throws IOException {
         Path = realPath;
         setCharsPerLine();
     }
@@ -165,11 +167,11 @@ public class Day11 {
         charsPerLine = Utilities.charsPerLine(Path);
     }
 
-    static void setIsPart2(boolean truthVal) {
+    public static void setIsPart2(boolean truthVal) {
         isPart2 = truthVal;
     }
 
-    static void setPart2GalaxyExpansionValue(int val) {
+    public static void setPart2GalaxyExpansionValue(int val) {
         part2GalaxyExpansionValue = val;
     }
 }

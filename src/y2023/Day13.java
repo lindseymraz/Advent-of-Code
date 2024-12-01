@@ -9,13 +9,13 @@ import java.util.regex.Pattern;
 public class Day13 {
 
     static final String realPath = "y2023.Day13.txt";
-    static final String testPath1 = "src/y2023.tests/Day13Part1Test.txt";
-    static final String testPath2 = "src/y2023.tests/Day13Part1Test2.txt";
+    public static final String testPath1 = "src/y2023.tests/Day13Part1Test.txt";
+    public static final String testPath2 = "src/y2023.tests/Day13Part1Test2.txt";
 
-    static String Path = realPath;
+    public static String Path = realPath;
     static int patternsInFile = 0;
 
-    static int day13part1() throws IOException {
+    public static int day13part1() throws IOException {
         String[][] patterns = makePatternsArray();
         int toReturn = 0;
         for (String[] pattern : patterns) {
@@ -23,7 +23,7 @@ public class Day13 {
         }
         return toReturn;
     }
-    static int countPatternsInFile() throws IOException {
+    public static int countPatternsInFile() throws IOException {
         Scanner scanner = new Scanner(Paths.get(Path));
         int patterns = 1;
         while(scanner.hasNextLine()) {
@@ -35,7 +35,7 @@ public class Day13 {
         return patterns;
     }
 
-    static int[] makeLinesInPatternsArray() throws IOException {
+    public static int[] makeLinesInPatternsArray() throws IOException {
         Scanner scanner = new Scanner(Paths.get(Path));
         setPatternsInFile();
         int[] linesInPatterns = new int[patternsInFile];
@@ -53,7 +53,7 @@ public class Day13 {
         return linesInPatterns;
     }
 
-    static String[][] makePatternsArray() throws IOException {
+    public static String[][] makePatternsArray() throws IOException {
         int[] linesInPatterns = makeLinesInPatternsArray();
         String[][] patterns = new String[patternsInFile][];
         Scanner scanner = new Scanner(Paths.get(Path));
@@ -76,7 +76,7 @@ public class Day13 {
         patternsInFile = countPatternsInFile();
     }
 
-    static boolean linesMirror(String string1, String string2) {
+    public static boolean linesMirror(String string1, String string2) {
         int length = string1.length();
         for(int i = 0; i < length; i++) {
             if(!string1.substring(i, i + 1).equals(string2.substring(length - i - 1, length - i))) {
@@ -85,7 +85,7 @@ public class Day13 {
         } return true;
     }
 
-    static int linesLeftOfVerticalLineOfReflection(String patternLines[]) {
+    public static int linesLeftOfVerticalLineOfReflection(String patternLines[]) {
         String string1 = "";
         String string2 = "";
         String substring = "";
@@ -116,7 +116,7 @@ public class Day13 {
         return 0;
     }
 
-    static boolean checkReflects(String patternLines[], int line1index, int line2index) {
+    public static boolean checkReflects(String patternLines[], int line1index, int line2index) {
         int limit = patternLines.length - 1 - line2index;
         if(limit > line1index) { limit = line1index; }
         for(int i = 0; i < limit; i++) {
@@ -127,7 +127,7 @@ public class Day13 {
         return true;
     }
 
-    static int rowsAboveHorizontalLineOfReflection(String[] patternLines) {
+    public static int rowsAboveHorizontalLineOfReflection(String[] patternLines) {
         String line1 = patternLines[0];
         String line2 = "";
         for(int i = 1; i < patternLines.length; i++) {

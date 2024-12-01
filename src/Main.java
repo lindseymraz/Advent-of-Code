@@ -1,8 +1,6 @@
-import y2023.Day19;
-
 public class Main {
     public static void main(String args[]) throws Exception {
-        System.out.println("Test");
+        System.out.println(y2024.Day1.day1part2());
     }
 
 }

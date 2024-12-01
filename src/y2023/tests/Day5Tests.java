@@ -1,3 +1,5 @@
+package y2023.tests;
+
 import org.junit.Test;
 import y2023.Day5;
 

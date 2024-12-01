@@ -28,13 +28,13 @@ public class Day15 {
     }
 
     public class Box {
-        ArrayList<Lens> lenses;
+        public ArrayList<Lens> lenses;
         public Box() {
             this.lenses = new ArrayList<Lens>();
         }
 
         //also moves the following lenses up
-        void removeLensWithLabel(String label) {
+        public void removeLensWithLabel(String label) {
             for(int i = 0; i < this.lenses.size(); i++) {
                 if(lenses.get(i).label.equals(label)) {
                     lenses.remove(lenses.get(i));
@@ -42,7 +42,7 @@ public class Day15 {
             }
         }
 
-        void addNewLens(String label, int focalLength) {
+        public void addNewLens(String label, int focalLength) {
             if(this.lenses.isEmpty()) {
                 this.lenses.add(0, new Lens(label, focalLength));
             } else {
@@ -66,7 +66,7 @@ public class Day15 {
         }
     }
 
-    static int day15part2() throws IOException {
+    public static int day15part2() throws IOException {
         Day15 a = new Day15();
         Box[] boxes = new Box[256];
         Scanner scanner = new Scanner(Paths.get(Path));
@@ -87,7 +87,7 @@ public class Day15 {
         }
         return getTotalFocusingPower(boxes);
     }
-    static int day15part1() throws IOException {
+    public static int day15part1() throws IOException {
         int toReturn = 0;
         Scanner scanner = new Scanner(Paths.get(Path));
         Pattern notCommas = Pattern.compile("[^,]*?(?=,)|(?<=,)[^,]*");
@@ -97,7 +97,7 @@ public class Day15 {
         }
         return toReturn;
     }
-    static int hashHelper(char aChar, int currentValue) {
+    public static int hashHelper(char aChar, int currentValue) {
         int toReturn = currentValue;
         toReturn += (int) aChar;
         toReturn *= 17;
@@ -105,7 +105,7 @@ public class Day15 {
         return toReturn;
     }
 
-    static int hashString(String toHash) {
+    public static int hashString(String toHash) {
         int toReturn = 0;
         for(int i = 0; i < toHash.length(); i++) {
             toReturn = hashHelper(toHash.charAt(i), toReturn);
@@ -113,7 +113,7 @@ public class Day15 {
         return toReturn;
     }
 
-    static int getTotalFocusingPower(Box[] boxes) {
+    public static int getTotalFocusingPower(Box[] boxes) {
         int toReturn = 0;
         int size = boxes.length;
         for(int i = 0; i < size; i++) {
@@ -126,7 +126,7 @@ public class Day15 {
         return toReturn;
     }
 
-    static void setPathToTestPath() {
+    public static void setPathToTestPath() {
         Path = testPath;
     }
 }
